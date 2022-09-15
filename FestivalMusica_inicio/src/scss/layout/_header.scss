@@ -1,23 +1,58 @@
 @use 'base/variables' as v;
+@use 'base/mixins' as m;
 
 // Que las anidaciones no sean de mas de 3 
 .header{
-    background-color: v.$verde;
-    margin-top: -2.7rem;
-
+    @include m.tablet {
+        &.fijo{
+            left: 0;
+            top: 0;
+            position: fixed;
+            width: 100%;
+            box-shadow: .1rem .2rem .2rem .1rem #333;
+        }
+    }
+    
+    background-color: v.$verde;   
     h1{
         color: v.$blanco;
+        text-align: center;
+        @include m.tablet {
+            margin: 0;
+        }
+    }
+    .contenido-header{
+        padding: 2rem;
+        @include m.tablet {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+        }
     }
 }
 
 .navegacion-principal{
+    @include m.tablet {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+    }
     a{
+        display:block;
+        text-align: center;
+        margin-bottom: 1rem;
         color: v.$blanco;
         font-size: 2.4rem;
+        @include m.tablet {
+            margin: 0;
+        }
 
         &:hover { //& para evitar el espacio y se compile los seudoelemento de manera correcta
             color: v.$amarillo;
         }
     }
 }
+
+
 
